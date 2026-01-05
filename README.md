@@ -15,8 +15,9 @@
 
 ## 🏆 Kết quả đạt được
 
-* **Điểm số:** 7200
+* **Điểm số:** 7230
 * **Xếp hạng (Coin):** Silver
 
 ### Minh chứng (Screenshot)
 file ảnh ở repo 
+
