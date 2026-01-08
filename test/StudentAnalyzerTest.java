@@ -131,126 +131,125 @@ public class StudentAnalyzerTest {
     }
     
 
-    
     // ========== Test cho calculateValidAverage() ==========
     
-//     /**
-//      * Test trường hợp bình thường: danh sách có điểm hợp lệ và không hợp lệ
-//      */
-//     @Test
-//     public void testCalculateValidAverage_MixedValidAndInvalid() {
-//         // Trung bình của 9.0, 8.5, 7.0 = 24.5 / 3 = 8.166...
-//         List<Double> scores = Arrays.asList(9.0, 8.5, 7.0, 11.0, -1.0);
-//         assertEquals(8.17, analyzer.calculateValidAverage(scores), 0.01,
-//             "Trung bình của 9.0, 8.5, 7.0 là 8.17");
-//     }
+    /**
+     * Test trường hợp bình thường: danh sách có điểm hợp lệ và không hợp lệ
+     */
+    @Test
+    public void testCalculateValidAverage_MixedValidAndInvalid() {
+        // Trung bình của 9.0, 8.5, 7.0 = 24.5 / 3 = 8.166...
+        List<Double> scores = Arrays.asList(9.0, 8.5, 7.0, 11.0, -1.0);
+        assertEquals(8.17, analyzer.calculateValidAverage(scores), 0.01,
+            "Trung bình của 9.0, 8.5, 7.0 là 8.17");
+    }
     
-//     /**
-//      * Test trường hợp bình thường: danh sách toàn bộ hợp lệ
-//      */
-//     @Test
-//     public void testCalculateValidAverage_AllValid() {
-//         List<Double> scores = Arrays.asList(10.0, 8.0, 6.0);
-//         assertEquals(8.0, analyzer.calculateValidAverage(scores), 0.01,
-//             "Trung bình của 10.0, 8.0, 6.0 là 8.0");
-//     }
+    /**
+     * Test trường hợp bình thường: danh sách toàn bộ hợp lệ
+     */
+    @Test
+    public void testCalculateValidAverage_AllValid() {
+        List<Double> scores = Arrays.asList(10.0, 8.0, 6.0);
+        assertEquals(8.0, analyzer.calculateValidAverage(scores), 0.01,
+            "Trung bình của 10.0, 8.0, 6.0 là 8.0");
+    }
     
-//     /**
-//      * Test trường hợp biên: danh sách trống
-//      */
-//     @Test
-//     public void testCalculateValidAverage_EmptyList() {
-//         List<Double> scores = Collections.emptyList();
-//         assertEquals(0.0, analyzer.calculateValidAverage(scores), 0.01,
-//             "Danh sách trống nên trả về 0.0");
-//     }
+    /**
+     * Test trường hợp biên: danh sách trống
+     */
+    @Test
+    public void testCalculateValidAverage_EmptyList() {
+        List<Double> scores = Collections.emptyList();
+        assertEquals(0.0, analyzer.calculateValidAverage(scores), 0.01,
+            "Danh sách trống nên trả về 0.0");
+    }
     
-//     /**
-//      * Test trường hợp biên: danh sách null
-//      */
-//     @Test
-//     public void testCalculateValidAverage_NullList() {
-//         assertEquals(0.0, analyzer.calculateValidAverage(null), 0.01,
-//             "Danh sách null nên trả về 0.0");
-//     }
+    /**
+     * Test trường hợp biên: danh sách null
+     */
+    @Test
+    public void testCalculateValidAverage_NullList() {
+        assertEquals(0.0, analyzer.calculateValidAverage(null), 0.01,
+            "Danh sách null nên trả về 0.0");
+    }
     
-//     /**
-//      * Test trường hợp biên: chỉ có điểm 0
-//      */
-//     @Test
-//     public void testCalculateValidAverage_OnlyZeros() {
-//         List<Double> scores = Arrays.asList(0.0, 0.0, 0.0);
-//         assertEquals(0.0, analyzer.calculateValidAverage(scores), 0.01,
-//             "Trung bình của các số 0 là 0.0");
-//     }
+    /**
+     * Test trường hợp biên: chỉ có điểm 0
+     */
+    @Test
+    public void testCalculateValidAverage_OnlyZeros() {
+        List<Double> scores = Arrays.asList(0.0, 0.0, 0.0);
+        assertEquals(0.0, analyzer.calculateValidAverage(scores), 0.01,
+            "Trung bình của các số 0 là 0.0");
+    }
     
-//     /**
-//      * Test trường hợp biên: chỉ có điểm 10
-//      */
-//     @Test
-//     public void testCalculateValidAverage_OnlyTens() {
-//         List<Double> scores = Arrays.asList(10.0, 10.0, 10.0);
-//         assertEquals(10.0, analyzer.calculateValidAverage(scores), 0.01,
-//             "Trung bình của các số 10 là 10.0");
-//     }
+    /**
+     * Test trường hợp biên: chỉ có điểm 10
+     */
+    @Test
+    public void testCalculateValidAverage_OnlyTens() {
+        List<Double> scores = Arrays.asList(10.0, 10.0, 10.0);
+        assertEquals(10.0, analyzer.calculateValidAverage(scores), 0.01,
+            "Trung bình của các số 10 là 10.0");
+    }
     
-//     /**
-//      * Test trường hợp biên: điểm ở ngưỡng 0 và 10
-//      */
-//     @Test
-//     public void testCalculateValidAverage_BoundaryValues() {
-//         List<Double> scores = Arrays.asList(0.0, 10.0);
-//         assertEquals(5.0, analyzer.calculateValidAverage(scores), 0.01,
-//             "Trung bình của 0.0 và 10.0 là 5.0");
-//     }
+    /**
+     * Test trường hợp biên: điểm ở ngưỡng 0 và 10
+     */
+    @Test
+    public void testCalculateValidAverage_BoundaryValues() {
+        List<Double> scores = Arrays.asList(0.0, 10.0);
+        assertEquals(5.0, analyzer.calculateValidAverage(scores), 0.01,
+            "Trung bình của 0.0 và 10.0 là 5.0");
+    }
     
-//     /**
-//      * Test trường hợp ngoại lệ: có điểm âm
-//      */
-//     @Test
-//     public void testCalculateValidAverage_WithNegativeScores() {
-//         List<Double> scores = Arrays.asList(10.0, -5.0, 8.0, -1.0);
-//         assertEquals(9.0, analyzer.calculateValidAverage(scores), 0.01,
-//             "Bỏ qua điểm âm, trung bình của 10.0 và 8.0 là 9.0");
-//     }
+    /**
+     * Test trường hợp ngoại lệ: có điểm âm
+     */
+    @Test
+    public void testCalculateValidAverage_WithNegativeScores() {
+        List<Double> scores = Arrays.asList(10.0, -5.0, 8.0, -1.0);
+        assertEquals(9.0, analyzer.calculateValidAverage(scores), 0.01,
+            "Bỏ qua điểm âm, trung bình của 10.0 và 8.0 là 9.0");
+    }
     
-//     /**
-//      * Test trường hợp ngoại lệ: có điểm lớn hơn 10
-//      */
-//     @Test
-//     public void testCalculateValidAverage_WithScoresAboveTen() {
-//         List<Double> scores = Arrays.asList(10.0, 15.0, 8.0, 100.0);
-//         assertEquals(9.0, analyzer.calculateValidAverage(scores), 0.01,
-//             "Bỏ qua điểm > 10, trung bình của 10.0 và 8.0 là 9.0");
-//     }
+    /**
+     * Test trường hợp ngoại lệ: có điểm lớn hơn 10
+     */
+    @Test
+    public void testCalculateValidAverage_WithScoresAboveTen() {
+        List<Double> scores = Arrays.asList(10.0, 15.0, 8.0, 100.0);
+        assertEquals(9.0, analyzer.calculateValidAverage(scores), 0.01,
+            "Bỏ qua điểm > 10, trung bình của 10.0 và 8.0 là 9.0");
+    }
     
-//     /**
-//      * Test trường hợp ngoại lệ: toàn bộ điểm không hợp lệ
-//      */
-//     @Test
-//     public void testCalculateValidAverage_AllInvalid() {
-//         List<Double> scores = Arrays.asList(-1.0, 11.0, -5.0, 20.0);
-//         assertEquals(0.0, analyzer.calculateValidAverage(scores), 0.01,
-//             "Tất cả điểm không hợp lệ, nên trả về 0.0");
-//     }
+    /**
+     * Test trường hợp ngoại lệ: toàn bộ điểm không hợp lệ
+     */
+    @Test
+    public void testCalculateValidAverage_AllInvalid() {
+        List<Double> scores = Arrays.asList(-1.0, 11.0, -5.0, 20.0);
+        assertEquals(0.0, analyzer.calculateValidAverage(scores), 0.01,
+            "Tất cả điểm không hợp lệ, nên trả về 0.0");
+    }
     
-//     /**
-//      * Test trường hợp có null trong danh sách
-//      */
-//     @Test
-//     public void testCalculateValidAverage_WithNullValues() {
-//         List<Double> scores = Arrays.asList(10.0, null, 8.0, null);
-//         assertEquals(9.0, analyzer.calculateValidAverage(scores), 0.01,
-//             "Bỏ qua giá trị null, trung bình của 10.0 và 8.0 là 9.0");
-//     }
+    /**
+     * Test trường hợp có null trong danh sách
+     */
+    @Test
+    public void testCalculateValidAverage_WithNullValues() {
+        List<Double> scores = Arrays.asList(10.0, null, 8.0, null);
+        assertEquals(9.0, analyzer.calculateValidAverage(scores), 0.01,
+            "Bỏ qua giá trị null, trung bình của 10.0 và 8.0 là 9.0");
+    }
     
-//     /**
-//      * Test trường hợp một điểm hợp lệ
-//      */
-//     @Test
-//     public void testCalculateValidAverage_SingleValidScore() {
-//         List<Double> scores = Arrays.asList(7.5);
-//         assertEquals(7.5, analyzer.calculateValidAverage(scores), 0.01,
-//             "Chỉ có một điểm 7.5, trung bình là 7.5");
-//     }
-// }
+    /**
+     * Test trường hợp một điểm hợp lệ
+     */
+    @Test
+    public void testCalculateValidAverage_SingleValidScore() {
+        List<Double> scores = Arrays.asList(7.5);
+        assertEquals(7.5, analyzer.calculateValidAverage(scores), 0.01,
+            "Chỉ có một điểm 7.5, trung bình là 7.5");
+    }
+}
