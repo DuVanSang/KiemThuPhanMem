@@ -1,0 +1,19 @@
+{
+  "name": "cypress-exercise",
+  "version": "1.0.0",
+  "description": "Bài tập thực hành kiểm thử E2E với Cypress cho trang SauceDemo",
+  "main": "index.js",
+  "scripts": {
+    "test": "cypress run",
+    "test:open": "cypress open",
+    "test:chrome": "cypress run --browser chrome",
+    "test:firefox": "cypress run --browser firefox",
+    "test:headed": "cypress run --headed"
+  },
+  "keywords": ["cypress", "e2e", "testing", "automation"],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^15.8.2"
+  }
+}
