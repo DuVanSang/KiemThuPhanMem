@@ -230,14 +230,6 @@ npm run test:headed
 - 🔍 **Real-time Reload**: Test chạy lại khi code thay đổi
 - 🐛 **Debug Mode**: Console log đầy đủ
 
-### 📸 Ảnh minh họa
-
-![Cypress Test Runner](cypress-result.png)
-
-## 6. Tài liệu chi tiết
-
-Xem hướng dẫn sử dụng chi tiết tại: [HUONG_DAN_SU_DUNG.md](cypress-exercise/HUONG_DAN_SU_DUNG.md)
-
 ---
 
 ## 📞 Thông tin liên hệ
