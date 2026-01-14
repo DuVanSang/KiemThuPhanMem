@@ -28,7 +28,7 @@ Kho dữ liệu này lưu trữ kết quả thực hành bài tập môn **Kiể
 > **Nhận xét cá nhân:** Qua bài tập này, em nhận thấy các lỗi về *Căn chỉnh* và *Kiểu chữ* là khó phát hiện nhất nếu không quan sát kỹ lưỡng pixel-perfect.
 
 
-#  Bài tập Unit Test: Student Analyzer
+#  Bài tập Kiểm thử đơn vị: Phân tích sinh viên
 
 ![Java](https://img.shields.io/badge/Java-17%2B-orange) ![JUnit](https://img.shields.io/badge/JUnit-5-green) ![Maven](https://img.shields.io/badge/Tool-Maven-red)
 
@@ -54,7 +54,7 @@ Unit_test/
 
 ## 4. Cách chạy kiểm thử
 
-### 4.1. Sử dụng Maven (Command Line)
+### 4.1. Sử dụng Maven 
 
 ```bash
 # Biên dịch project
@@ -123,7 +123,7 @@ mvn compile exec:java "-Dexec.mainClass=StudentAnalyzer"
 
 ---
 
-# Bài tập E2E Test: Cypress Testing
+# Bài tập Kiểm thử E2E: Kiểm thử Cypress
 
 ![Cypress](https://img.shields.io/badge/Cypress-15.8.2-green)
 ![Node](https://img.shields.io/badge/Node.js-14%2B-brightgreen)
