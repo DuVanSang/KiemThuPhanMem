@@ -1,4 +1,4 @@
-#  Báo Cáo Thực Hành: Kiểm Thử Thị Giác (Visual Testing)
+#  Báo Cáo Thực Hành: Kiểm Thử Thị Giác 
 
 ![Trạng thái](https://img.shields.io/badge/Trạng%20th%C3%A1i-Ho%C3%A0n%20th%C3%A0nh-success)
 ![Môn học](https://img.shields.io/badge/M%C3%B4n%20h%E1%BB%8Dc-Ki%E1%BB%83m%20th%E1%BB%AD%20ph%E1%BA%A7n%20m%E1%BB%81m-blue)
