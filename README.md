@@ -190,7 +190,7 @@ npm run test:open
 Sau đó:
 1. Chọn **"E2E Testing"**
 2. Chọn trình duyệt (Chrome khuyên dùng)
-3. Click vào file test để chạy
+3. Nhấp vào tập tin kiểm thử để chạy
 
 ### 4.3. Chạy kiểm thử tự động 
 
