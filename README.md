@@ -223,7 +223,7 @@ npm run test:headed
 
 -  **Xem lại lịch sử thực thi**: Xem lại từng bước kiểm thử
 - **Tự động chụp màn hình**: Chụp màn hình khi thất bại
--  **Ghi lại video test**: Ghi lại toàn bộ kiểm thử
+-  **Ghi lại video kiểm thử**: Ghi lại toàn bộ kiểm thử
 -  **Tải lại theo thời gian thực**: Kiểm thử chạy lại khi code thay đổi
 -  **Chế độ gỡ lỗi**: Console log đầy đủ
 
