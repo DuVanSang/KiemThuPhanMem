@@ -30,7 +30,7 @@ Kho dữ liệu này lưu trữ kết quả thực hành bài tập môn **Kiể
 
 #  Bài tập Kiểm thử đơn vị: Phân tích sinh viên
 
-![Java](https://img.shields.io/badge/Java-17%2B-orange) ![JUnit](https://img.shields.io/badge/JUnit-5-green) ![Maven](https://img.shields.io/badge/Tool-Maven-red)
+![Java](https://img.shields.io/badge/Java-11%2B-orange) ![JUnit](https://img.shields.io/badge/JUnit-5.10.1-green) ![Maven](https://img.shields.io/badge/Maven-3.x-red) ![Tests](https://img.shields.io/badge/Tests-59%20passed-brightgreen) ![Coverage](https://img.shields.io/badge/Coverage-100%25-success)
 
 ## 1. Giới thiệu
 Dự án thực hành môn **Kiểm thử phần mềm**, tập trung vào việc viết Unit Test tự động cho các hàm xử lý dữ liệu điểm số học sinh nhằm đảm bảo tính đúng đắn và xử lý ngoại lệ.
@@ -60,11 +60,15 @@ Unit_test/
 # Biên dịch project
 mvn clean compile
 
-# Chạy tất cả trường hợp kiểm thử
+# Chạy tất cả kiểm thử
 mvn test
 
-# Chạy một kiểm thử cụ thể
+# Chạy kiểm thử cụ thể
 mvn test -Dtest=StudentAnalyzerTest
+
+# Tạo báo cáo JaCoCo coverage
+mvn clean test
+# Mở: target/site/jacoco/index.html
 ```
 
 ### 4.2. Sử dụng VS Code
@@ -82,39 +86,56 @@ mvn compile exec:java "-Dexec.mainClass=StudentAnalyzer"
 
 ## 5. Kết quả kiểm thử
 
-### Thống kê Độ bao phủ kiểm thử
+### Thống kê kiểm thử
 
-| Test Suite | Total Tests | Passed | Failed | Coverage |
-|------------|-------------|--------|--------|----------|
-| **countExcellentStudents()** | 11 tests | 11 | 0 | 100% |
-| **calculateValidAverage()** | 12 tests | 12 | 0 | 100% |
-| **Tổng cộng** | **23 tests** |  23|  0 | **100%** |
+| Loại kiểm thử | Số lượng | Trạng thái | Kỹ thuật áp dụng |
+|-----------|----------|------------|------------------|
+| Trường hợp bình thường | 10 | Đạt | Phân hoạch tương đương |
+| Trường hợp biên | 13 | Đạt | Phân tích giá trị biên |
+| Xử lý ngoại lệ | 6 | Đạt | Dự đoán lỗi |
+| Kiểm thử bảng quyết định | 30 | Đạt | Kiểm thử hướng dữ liệu |
+| **Tổng cộng** | **59** | **Đạt** | **Đầy đủ** |
 
-###  Ảnh minh họa kết quả
+### Ảnh minh họa kết quả
 
 ![Kết quả Unit Test](test.png)
 
-### Các trường hợp đã kiểm thử
+### Báo cáo độ bao phủ mã nguồn (JaCoCo)
 
-**Trường hợp bình thường:**
-- Danh sách có điểm hợp lệ và không hợp lệ
-- Danh sách toàn bộ hợp lệ
+![Báo cáo độ bao phủ JaCoCo](Jacoco.png)
 
-**Trường hợp biên:**
-- Danh sách rỗng
-- Điểm ở ngưỡng (0, 8.0, 10)
+**Chỉ số đạt được:**
+- Độ bao phủ dòng lệnh: 100%
+- Độ bao phủ nhánh: 100%
+- Độ bao phủ phương thức: 100%
 
-**Trường hợp ngoại lệ:**
-- Điểm âm (< 0)
-- Điểm vượt quá (> 10)
-- Giá trị rỗng trong danh sách
+### Kỹ thuật kiểm thử đã áp dụng
+
+**1. Phân hoạch tương đương**
+- Phân hoạch dữ liệu thành các nhóm tương đương
+- Kiểm thử đại diện cho từng nhóm
+
+**2. Phân tích giá trị biên**
+- Kiểm thử các giá trị biên: 0, 8.0, 10.0
+- Kiểm thử giá trị epsilon: 7.999999, 8.000001
+
+**3. Kiểm thử bảng quyết định**
+- 15 trường hợp cho countExcellentStudents()
+- 15 trường hợp cho calculateValidAverage()
+- Sử dụng @ParameterizedTest và @MethodSource
+
+**4. Xử lý ngoại lệ**
+- Danh sách rỗng, danh sách null
+- Điểm không hợp lệ (< 0, > 10)
+- Dữ liệu hợp lệ và không hợp lệ trộn lẫn
 
 ## 6. Công nghệ sử dụng
 
 - **Java**: 11+
-- **JUnit**: 5.10.1 (JUnit Jupiter)
-- **Maven**: 3.x
-- **Công cụ xây dựng**: Maven Surefire Plugin
+- **JUnit**: 5.10.1 (Thư viện kiểm thử đơn vị)
+- **Maven**: 3.x (Công cụ quản lý dự án)
+- **JaCoCo**: 0.8.11 (Phân tích độ bao phủ mã nguồn)
+- **Surefire Plugin**: 3.0.0 (Chạy kiểm thử tự động)
 
 ## 7. Tài liệu tham khảo
 
