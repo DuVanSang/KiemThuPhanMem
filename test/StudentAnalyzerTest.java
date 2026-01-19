@@ -130,6 +130,37 @@ public class StudentAnalyzerTest {
             "Bỏ qua giá trị null, chỉ đếm 9.0 và 8.5");
     }
     
+    /**
+     * Test BAV nghiêm ngặt: Các giá trị cực sát biên 0 và 10 (Epsilon Boundaries)
+     * Theo đánh giá của Gemini - Kiểm tra biên chính xác với số thực
+     */
+    @Test
+    public void testCountExcellentStudents_StrictEpsilonBoundaries() {
+        // -0.01: Không hợp lệ (dưới 0)
+        // 0.0: Hợp lệ (tại biên dưới)
+        // 0.01: Hợp lệ (trên biên dưới)
+        // 9.99: Hợp lệ (dưới biên trên)
+        // 10.0: Hợp lệ (tại biên trên)
+        // 10.01: Không hợp lệ (trên 10)
+        List<Double> scores = Arrays.asList(-0.01, 0.0, 0.01, 9.99, 10.0, 10.01);
+        
+        // Chỉ 9.99 và 10.0 là giỏi (>= 8.0)
+        assertEquals(2, analyzer.countExcellentStudents(scores), 
+            "Chỉ tính 9.99 và 10.0 là học sinh giỏi, loại bỏ -0.01 và 10.01");
+    }
+    
+    /**
+     * Test BAV: Biên epsilon tại ngưỡng điểm giỏi 8.0
+     */
+    @Test
+    public void testCountExcellentStudents_EpsilonAroundThreshold() {
+        // Test các giá trị cực sát ngưỡng 8.0
+        List<Double> scores = Arrays.asList(7.99, 7.999, 8.0, 8.001, 8.01);
+        
+        // Chỉ >= 8.0 mới là giỏi: 8.0, 8.001, 8.01
+        assertEquals(3, analyzer.countExcellentStudents(scores),
+            "7.99 và 7.999 không giỏi, còn lại 3 điểm >= 8.0 là giỏi");
+    }
 
     // ========== Test cho calculateValidAverage() ==========
     
@@ -251,5 +282,62 @@ public class StudentAnalyzerTest {
         List<Double> scores = Arrays.asList(7.5);
         assertEquals(7.5, analyzer.calculateValidAverage(scores), 0.01,
             "Chỉ có một điểm 7.5, trung bình là 7.5");
+    }
+    
+    /**
+     * Test BAV nghiêm ngặt: Các giá trị cực sát biên 0 và 10
+     * Theo gợi ý của Gemini - Coverage cho epsilon boundaries
+     */
+    @Test
+    public void testCalculateValidAverage_StrictEpsilonBoundaries() {
+        // -0.01: Không hợp lệ
+        // 0.0: Hợp lệ
+        // 10.0: Hợp lệ
+        // 10.01: Không hợp lệ
+        List<Double> scores = Arrays.asList(-0.01, 0.0, 10.0, 10.01);
+        
+        // Chỉ có 0.0 và 10.0 được tính
+        // Trung bình: (0.0 + 10.0) / 2 = 5.0
+        assertEquals(5.0, analyzer.calculateValidAverage(scores), 0.001,
+            "Trung bình của 0.0 và 10.0 phải là 5.0, loại bỏ -0.01 và 10.01");
+    }
+    
+    /**
+     * Test BAV: Độ chính xác floating point với các số thập phân nhỏ
+     */
+    @Test
+    public void testCalculateValidAverage_FloatingPointPrecision() {
+        // Test với các số thập phân có nhiều chữ số
+        List<Double> scores = Arrays.asList(8.333, 8.666, 8.999);
+        
+        // Trung bình: (8.333 + 8.666 + 8.999) / 3 = 25.998 / 3 = 8.666
+        assertEquals(8.666, analyzer.calculateValidAverage(scores), 0.01,
+            "Trung bình của 8.333, 8.666, 8.999 là 8.666");
+    }
+    
+    /**
+     * Test BAV: Giá trị epsilon tại biên dưới (sát 0)
+     */
+    @Test
+    public void testCalculateValidAverage_LowerEpsilonBoundary() {
+        List<Double> scores = Arrays.asList(-0.001, 0.0, 0.001, 0.01);
+        
+        // Chỉ 0.0, 0.001, 0.01 hợp lệ
+        // Trung bình: (0.0 + 0.001 + 0.01) / 3 = 0.011 / 3 ≈ 0.00367
+        assertEquals(0.00367, analyzer.calculateValidAverage(scores), 0.001,
+            "Trung bình các giá trị >= 0, loại bỏ -0.001");
+    }
+    
+    /**
+     * Test BAV: Giá trị epsilon tại biên trên (sát 10) s
+     */
+    @Test
+    public void testCalculateValidAverage_UpperEpsilonBoundary() {
+        List<Double> scores = Arrays.asList(9.99, 9.999, 10.0, 10.001);
+        
+        // Chỉ 9.99, 9.999, 10.0 hợp lệ (loại bỏ 10.001)
+        // Trung bình: (9.99 + 9.999 + 10.0) / 3 = 29.989 / 3 ≈ 9.996
+        assertEquals(9.996, analyzer.calculateValidAverage(scores), 0.01,
+            "Trung bình các giá trị <= 10, loại bỏ 10.001");
     }
 }
